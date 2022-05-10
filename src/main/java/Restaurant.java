@@ -54,7 +54,11 @@ public class Restaurant {
     }
 
     public double calculateOrderTotal(List<Item> selectedMenuItems) {
-        return -1;
+        double totalAmount = 0.0;
+        for(Item item: selectedMenuItems) {
+            totalAmount += item.getPrice();
+        }
+        return totalAmount;
     }
 
     public String getName() {
