@@ -53,6 +53,10 @@ public class Restaurant {
 
     }
 
+    public double calculateOrderTotal(List<Item> selectedMenuItems) {
+        return -1;
+    }
+
     public String getName() {
         return name;
     }

@@ -2,6 +2,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
+import java.util.List;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -60,6 +62,17 @@ class RestaurantTest {
     public void removing_item_that_does_not_exist_should_throw_exception() {
         assertThrows(itemNotFoundException.class,
                 ()->restaurant.removeFromMenu("French fries"));
+    }
+    @Test
+    public void calculate_selected_items_order_should_return_correct_total_price() {
+        double orderTotal = restaurant.calculateOrderTotal(restaurant.getMenu());
+        assertEquals(orderTotal, 119+269);
+    }
+    @Test
+    public void calculate_selected_items_order_should_return_0_when_no_item_is_selected() {
+        List<Item> emptyList = Collections.emptyList();
+        double orderTotal = restaurant.calculateOrderTotal(emptyList);
+        assertEquals(orderTotal, 0);
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
